@@ -9,4 +9,4 @@ const App =() => {
     );
 };
 
-export defoult App
+export default App
