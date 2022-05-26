@@ -8,7 +8,7 @@ import {ContentIn} from "./Componente/Layout/ContentIn";
 import HeaderIn from "./Componente/Layout/HeaderIn";
 import { FormModel } from './Componente/Layout/FormModel';
 import {Login} from "./Componente/Layout/Login";
-
+import { useLoginStore } from ".";
 function App() {
 
     const loginS = useLoginStore();
@@ -20,9 +20,9 @@ function App() {
       <Layout>
 
           <HeaderIn/>
-          <div style={{ padding: '80px 10px 10px 10px'
-          }}/>
-          <FormModel/>
+          {/*<div style={{ padding: '80px 10px 10px 10px'*/}
+          {/*}}/>*/}
+          {/*<FormModel/>*/}
           <div style={{ padding: '80px 50px 50px 50px'
           }}/>
           <ContentIn />

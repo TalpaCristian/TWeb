@@ -5,11 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {IRootStore} from "./Interface/Interfaces";
 import storeProvider from "./Mst/Stores/StoreProvider";
+import {loginStore} from "./Mst/Stores/Login.provider";
+import {ILoginStore} from "./Interface/InterfaceMenu";
 const StoreContext = React.createContext<IRootStore | any>(null)
-
-
-
 export const useRootStore =()=>React.useContext(StoreContext)
+
 const StoreProvider =({children }:{children:ReactElement})=>{
     return(
         <StoreContext.Provider value={storeProvider}>
@@ -17,11 +17,26 @@ const StoreProvider =({children }:{children:ReactElement})=>{
         </StoreContext.Provider>
     )
 }
+const LoginContext = React.createContext<ILoginStore | any>(null);
+export const useLoginStore = () => React.useContext(LoginContext);
 
+const LoginProvider = ({ children }: { children: ReactElement }) => {
+    return (
+        <LoginContext.Provider value={ loginStore }>
+            { children }
+        </LoginContext.Provider>
+    )
+}
 ReactDOM.render(
   <React.StrictMode>
+      {/*<StoreProvider>*/}
       <StoreProvider>
-          <App />
+          <LoginProvider>
+
+                  <App />
+                  {/*</StoreProvider>*/}
+
+          </LoginProvider>
       </StoreProvider>
   </React.StrictMode>,
   document.getElementById('root')
