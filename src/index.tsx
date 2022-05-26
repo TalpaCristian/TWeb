@@ -5,10 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {IRootStore} from "./Interface/Interfaces";
 import storeProvider from "./Mst/Stores/StoreProvider";
+import {loginStore} from "./Mst/Stores/Login.provider";
+import {ILoginStore} from "./Interface/InterfaceMenu";
+import {BrowserRouter} from "react-router-dom";
 const StoreContext = React.createContext<IRootStore | any>(null)
-
-
-
 export const useRootStore =()=>React.useContext(StoreContext)
 const StoreProvider =({children }:{children:ReactElement})=>{
     return(
@@ -17,14 +17,28 @@ const StoreProvider =({children }:{children:ReactElement})=>{
         </StoreContext.Provider>
     )
 }
+const LoginContext = React.createContext<ILoginStore | any>(null);
+export const useLoginStore = () => React.useContext(LoginContext);
 
+const LoginProvider = ({ children }: { children: ReactElement }) => {
+    return (
+        <LoginContext.Provider value={ loginStore }>
+            { children }
+        </LoginContext.Provider>
+    )
+}
 ReactDOM.render(
-  <React.StrictMode>
-      <StoreProvider>
-          <App />
-      </StoreProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        {/*<StoreProvider>*/}
+        <StoreProvider>
+        <LoginProvider>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </LoginProvider>
+    </StoreProvider>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 reportWebVitals();
