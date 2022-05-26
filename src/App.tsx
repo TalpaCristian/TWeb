@@ -7,16 +7,15 @@ import {Footer} from "antd/es/layout/layout";
 import {ContentIn} from "./Componente/Layout/ContentIn";
 import HeaderIn from "./Componente/Layout/HeaderIn";
 import { FormModel } from './Componente/Layout/FormModel';
-import {useRootStore} from "./index";
+import {Login} from "./Componente/Layout/Login";
 
 function App() {
-    const roottoStore =useRootStore()
-    useEffect(()=>{
-        roottoStore.setInitialStorageValue()
-        roottoStore.setDatainLocalStorage()
-        roottoStore.getDatafromLocalStorage()
-        // roottoStore.removemyLocalStorage()
-    },[])
+
+    const loginS = useLoginStore();
+
+    useEffect(() => {
+        loginS.setInitialStorageContents()
+    }, [])
   return (
       <Layout>
 
@@ -27,6 +26,7 @@ function App() {
           <div style={{ padding: '80px 50px 50px 50px'
           }}/>
           <ContentIn />
+          <Login/>
         <Footer style={{ textAlign: 'center' }}>Talpa Cristian</Footer>
       </Layout>
   );
