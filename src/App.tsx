@@ -4,7 +4,7 @@ import './App.css'
 import 'antd/dist/antd.css'
 import {Layout} from "antd";
 import {Footer} from "antd/es/layout/layout";
-import ContentIn from "./Componente/Layout/ContentIn";
+import {ContentIn} from "./Componente/Layout/ContentIn";
 import HeaderIn from "./Componente/Layout/HeaderIn";
 import { FormModel } from './Componente/Layout/FormModel';
 

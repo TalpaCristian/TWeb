@@ -1,5 +1,7 @@
 import { Row } from 'antd';
-import CustomCard from './CardCustom';
+import {CustomCard} from './CardCustom';
+import {useRootStore} from "../../index";
+import {IContentModel} from "../../Interface/Interfaces";
 const content = [
     {
         id: 1,
@@ -19,19 +21,22 @@ const content = [
 ]
 
 
-function ContentIn() {
+
+export  const  ContentIn = () => {
+    const {contents} = useRootStore()
+    console.log(">>root_store",contents)
     return (
 
-        <Row gutter={16} >
-            {
-                content.map((element, i) => {
+        <div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
+            <Row gutter={16} >
+                {contents.map((content:IContentModel) => {
                     return (
-                        <CustomCard key={element.id} title={element.title} content={element.content}/>
+                        <CustomCard key={content.id} content={content}/>
                     )
-                })
-            }
-        </Row>
+                } )}
+
+            </Row>
+
+        </div>
     )
 }
-
-export default ContentIn
