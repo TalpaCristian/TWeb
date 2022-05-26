@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css'
 import 'antd/dist/antd.css'
@@ -7,8 +7,16 @@ import {Footer} from "antd/es/layout/layout";
 import {ContentIn} from "./Componente/Layout/ContentIn";
 import HeaderIn from "./Componente/Layout/HeaderIn";
 import { FormModel } from './Componente/Layout/FormModel';
+import {useRootStore} from "./index";
 
 function App() {
+    const roottoStore =useRootStore()
+    useEffect(()=>{
+        roottoStore.setInitialStorageValue()
+        roottoStore.setDatainLocalStorage()
+        roottoStore.getDatafromLocalStorage()
+        // roottoStore.removemyLocalStorage()
+    },[])
   return (
       <Layout>
 
